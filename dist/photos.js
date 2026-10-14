@@ -59,7 +59,7 @@ async function saveSelectedPhotos(form,details){
 }
 function uploadPhotos(id,kind='阶段照'){
   const c=client(id);if(!c)return;
-  openModal('上传客户照片',`<form data-form="photos"><input type="hidden" name="client" value="${id}"><div class="detail-summary"><h3>${esc(c.name)} · 照片档案</h3><p>为本次照片标记日期与类型，后续可按时间回顾。</p></div><div class="form-grid" style="margin-top:20px"><label class="field">照片类型<select name="kind">${['初始照','服务照','阶段照'].map(t=>`<option ${t===kind?'selected':''}>${t}</option>`).join('')}</select></label><label class="field">拍摄日期<input name="date" type="date" value="2026-10-13" required></label>${photoFields(true)}<label class="field full">照片说明（选填）<input name="note" maxlength="200" placeholder="例如：正面，自然光，同一拍摄位置"></label></div><p class="form-hint">当前为本地原型，请使用测试图片。图片不会上传到服务器，也不会跨设备同步。</p>${actions('保存照片')}</form>`);
+  openModal('上传客户照片',`<form data-form="photos"><input type="hidden" name="client" value="${id}"><div class="detail-summary"><h3>${esc(c.name)} · 照片档案</h3><p>为本次照片标记日期与类型，后续可按时间回顾。</p></div><div class="form-grid" style="margin-top:20px"><label class="field">照片类型<select name="kind">${['初始照','服务照','阶段照','案例照'].map(t=>`<option ${t===kind?'selected':''}>${t}</option>`).join('')}</select></label><label class="field">拍摄日期<input name="date" type="date" value="2026-10-13" required></label>${photoFields(true)}<label class="field full">照片说明（选填）<input name="note" maxlength="200" placeholder="例如：正面，自然光，同一拍摄位置"></label></div><p class="form-hint">当前为本地原型，请使用测试图片。图片不会上传到服务器，也不会跨设备同步。</p>${actions('保存照片')}</form>`);
 }
 function viewPhoto(id){
   const p=demoPhotos.find(item=>item.id===id);if(!p)return;
